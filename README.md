@@ -50,31 +50,28 @@ I mappen `utils` finns en samling hjälpfunktioner som återanvänds genom hela 
 - **fetchProducts()**  
   Hämtar alla produkter från API:et via:  
   ```javascript
-  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
-  Returnerar data från svaret, eller en tom array om ett fel uppstår.
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/products/';
 
-**fetchCategories()**
-Hämtar alla kategorier från API:et via:
-const url = 'https://webshop-2025-be-g9.vercel.app/api/category/';
-Returnerar data från svaret, eller en tom array vid fel.
+- **fetchCategories()**
+  Hämtar alla produkter från API:et via:  
+  ```javascript
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/category/';
 
-**fetchOrders()**
+- **fetchOrders()**
 Hämtar orderdata från API:et via:
+```javascript
 const url = 'https://webshop-2025-be-g9.vercel.app/api/orders/';
-Vid fel loggas ett meddelande och en tom array returneras.
 
-**searchProducts(query)**
+- **searchProducts(query)**
 Söker efter produkter utifrån ett sökord. Parametern query kodas med encodeURIComponent för att hantera specialtecken.
-URL:
 const url = `https://webshop-2025-be-g9.vercel.app/api/products?search=${encodeURIComponent(query)}`;
-Returnerar sökresultat eller en tom array vid fel.
 
-**fetchUser()**
+- **fetchUser()**
 Hämtar användardata från API:et via:
 const url = 'https://webshop-2025-be-g9.vercel.app/api/user/';
 Om ett fel uppstår loggas detta, och en tom array returneras.
 
-**loginUser(email, password)**
+- **loginUser(email, password)**
 Skickar en POST-förfrågan för att logga in en användare med e-post och lösenord.
 URL:
 const url = 'https://webshop-2025-be-g9.vercel.app/api/user/login/'
@@ -82,7 +79,7 @@ Funktionen returnerar svarsdatan eller felobjektet om något går snett.
 
 
 
-# Exempel på hur hjälpfunktionerna ser ut i koden:
+## Exempel på hur hjälpfunktionerna ser ut i koden:
 
 import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.8/+esm';
 
