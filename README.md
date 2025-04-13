@@ -68,14 +68,14 @@ const url = `https://webshop-2025-be-g9.vercel.app/api/products?search=${encodeU
 
 - **fetchUser()**
 Hämtar användardata från API:et via:
+```javascript
 const url = 'https://webshop-2025-be-g9.vercel.app/api/user/';
-Om ett fel uppstår loggas detta, och en tom array returneras.
 
 - **loginUser(email, password)**
 Skickar en POST-förfrågan för att logga in en användare med e-post och lösenord.
-URL:
+```javascript
 const url = 'https://webshop-2025-be-g9.vercel.app/api/user/login/'
-Funktionen returnerar svarsdatan eller felobjektet om något går snett.
+
 
 
 
@@ -93,6 +93,8 @@ export async function fetchProducts() {
     return [];
   }
 }
+
+---
 
 ## Förbättringspunkter
 mer UX
