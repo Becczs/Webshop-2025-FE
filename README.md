@@ -58,41 +58,43 @@ I mappen `utils` finns en samling hjälpfunktioner som återanvänds genom hela 
   const url = 'https://webshop-2025-be-g9.vercel.app/api/category/';
 
 - **fetchOrders()**
-Hämtar orderdata från API:et via:
-```javascript
-const url = 'https://webshop-2025-be-g9.vercel.app/api/orders/';
+  Hämtar orderdata från API:et via:
+  ```javascript
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/orders/';
 
 - **searchProducts(query)**
-Söker efter produkter utifrån ett sökord. Parametern query kodas med encodeURIComponent för att hantera specialtecken.
-const url = `https://webshop-2025-be-g9.vercel.app/api/products?search=${encodeURIComponent(query)}`;
+  Söker efter produkter utifrån ett sökord. Parametern query kodas med encodeURIComponent för att hantera specialtecken.
+  ```javascript
+  const url = `https://webshop-2025-be-g9.vercel.app/api/products?search=${encodeURIComponent(query)}`;
 
 - **fetchUser()**
-Hämtar användardata från API:et via:
-```javascript
-const url = 'https://webshop-2025-be-g9.vercel.app/api/user/';
+  Hämtar användardata från API:et via:
+  ```javascript
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/user/';
 
 - **loginUser(email, password)**
-Skickar en POST-förfrågan för att logga in en användare med e-post och lösenord.
-```javascript
-const url = 'https://webshop-2025-be-g9.vercel.app/api/user/login/'
+  Skickar en POST-förfrågan för att logga in en användare med e-post och lösenord.
+  ```javascript
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/user/login/'
 
 
 
 
 ## Exempel på hur hjälpfunktionerna ser ut i koden:
+```javascript
 
-import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.8/+esm';
+  import axios from 'https://cdn.jsdelivr.net/npm/axios@1.6.8/+esm';
 
-export async function fetchProducts() {
-  const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.error('Fel vid hämtning av produkter:', error);
-    return [];
+  export async function fetchProducts() {
+    const url = 'https://webshop-2025-be-g9.vercel.app/api/products';
+    try {
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.error('Fel vid hämtning av produkter:', error);
+      return [];
+    }
   }
-}
 
 ---
 
