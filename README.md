@@ -99,8 +99,11 @@ I mappen `utils` finns en samling hjälpfunktioner som återanvänds genom hela 
 
 
   ## Förbättringspunkter
-  mer UX
-
+  - mer UX
+  - utökad funktionalitet, hantera beställningar som admin, öka pris på produkt när antal ändras (i varukorgen),
+    rensa inte varukorg förns beställning är gjord osv.
+  - responsivitet, nu endast anpasad för desktop.
+  - feedback till användare, laddningsstatus och felmeddelanden.
 
 
 
