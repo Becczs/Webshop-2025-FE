@@ -174,13 +174,15 @@ async function loginUser(email, password) {
   const response = await axios.post(`${BASE_URL}/login/`, { email, password });
   const token = response.data.token;
   localStorage.setItem('token', token);
-}
+}```
+
  ## Dashboard
-När en administratör loggar in kan hen navigera till dashboarden via dashboard/index.html och får då tillgång till följande funktioner:
-*Se och hantera ordrar (order.html & order.js)*
-I order.js används funktionen fetchOrders() för att hämta alla ordrar från backend och visa dem i en tabell:
-javascript
-import { fetchOrders } from "../utils/api.js";
+ ```javascript
+  När en administratör loggar in kan hen navigera till dashboarden via dashboard/index.html och får då tillgång till följande funktioner:
+  *Se och hantera ordrar (order.html & order.js)*
+  I order.js används funktionen fetchOrders() för att hämta alla ordrar från backend och visa dem i en tabell:
+  javascript
+  import { fetchOrders } from "../utils/api.js";
 
 async function renderOrders() {
   const orders = await fetchOrders();
@@ -188,6 +190,7 @@ async function renderOrders() {
     // Generera HTML-rader för varje order
   });
 }
+
 Funktion som används:
 javascript
 export async function fetchOrders() {
@@ -197,6 +200,7 @@ export async function fetchOrders() {
   const response = await axios.get(url, config);
   return response.data;
 }
+
 Administratören kan även skriva ut en plocklista för varje beställning.
 ## Lista och redigera produkter (products.html)
 Produkter hämtas och visas på sidan med hjälp av fetchProducts(). Varje produkt listas med möjlighet att redigera pris, antal och kategori.
@@ -210,8 +214,12 @@ async function renderProducts() {
     // Skapa DOM-element för varje produkt
   });
 }
+
 Formulär på sidan gör det möjligt för admin att uppdatera produkternas information. Förändringarna skickas till backend med hjälp av PATCH- eller PUT-anrop (om tillgängligt i API).
+```
+
 ##Skapa produktkort i gränssnittet
+```javascript
 När produkter hämtas från API:et används en funktion för att dynamiskt skapa HTML-element – ett produktkort för varje produkt. Det här är ett exempel på hur ett produktkort kan genereras i JavaScript:
 javascript
 function createProductCard(product) {
@@ -229,6 +237,7 @@ function createProductCard(product) {
 
   return container;
 }
+
 Denna funktion används tillsammans med fetchProducts() i loopen för att rendera hela produktlistan:
 javascript
 const productList = document.getElementById("productList");
