@@ -34,7 +34,7 @@ En webshop för Hakims kunder där de kan handla online och även få varorna he
 - README.md
   Dokumentation för projektet.
 
-###SCSS-mappen
+### SCSS-mappen
 -  scss/
   Innehåller alla dina SCSS-filer uppdelade i underkategorier för bättre överskådlighet och underhåll. Filstrukturen kan t.ex. se ut så här:
 
@@ -69,7 +69,7 @@ layout/
 -  index.html
   Ingångssida till själva dashboarden, där man får en översikt.
 
-###src
+### src
 - img
   Logga för projektet.
 
