@@ -12,7 +12,72 @@ En webshop för Hakims kunder där de kan handla online och även få varorna he
 
 [Deploy Instruktioner](https://willandskill.notion.site/Projekt-upps-ttning-Frontend-1b617cd1771581d49123f895777366cb)
 
+
 ## Kodstruktur och Arkitektur
+
+### Rotmappen
+- index.html
+  Huvudingången till webbplatsen där grundläggande HTML-struktur och länkningar till stilmallar och script ligger.
+
+- cart.html / checkout.html
+  Fristående HTML-sidor för varukorg och utcheckning. Varje sida har sin egen struktur men delar ofta logik via gemensamma script och styling.
+
+- style.css
+  En kompilerad CSS-fil som innehåller den samlade stilmallen för projektet.
+
+- combine_files.py
+  Ett eventuellt skript för att kombinera filer eller automatisk sammanställning av projektet.
+
+- vercel.json
+  Inställningsfil för Vercel-deploy om projektet ligger på Vercel. Används för att konfigurera routing och build-inställningar.
+
+- README.md
+  Dokumentation för projektet.
+
+###SCSS-mappen
+-  scss/
+  Innehåller alla dina SCSS-filer uppdelade i underkategorier för bättre överskådlighet och underhåll. Filstrukturen kan t.ex. se ut så här:
+
+ base/
+  Gemensamma grundinställningar och variabler (_globals.scss, _variables.scss).
+
+ components/
+  SCSS-filer för specifika komponenter, som kort (_cards.scss), formulär (_form.scss) och liknande.
+
+layout/
+  Stilmallar för större layoutdelar, exempelvis header, footer, sidebar och liknande.
+
+ main.scss
+  En huvudsaklig SCSS-fil där du importerar alla partials från ovanstående mappar. Den kompileras vanligtvis till en motsvarande main.css.
+
+### Auth-mappen
+-  auth.js
+  Innehåller övergripande logik för autentisering och inloggning/utloggning.
+
+-  login.html / register.html
+  Sidor för inloggning och registrering av användare.
+
+-  register.js, services.js, user.js
+
+### Dashboard-mappen
+-  customers.html, products.html, transactions.html m.fl.
+  Sidor som utgör olika delar av ett administrativt gränssnitt eller en intern dashboard.
+
+-  dashboard.js, order.js, products.js
+  Js filer för admin dashboard, t.ex. för att hämta information om ordrar, kunder eller produkter från ett API.
+
+-  index.html
+  Ingångssida till själva dashboarden, där man får en översikt.
+
+###src
+- img
+  Logga för projektet.
+
+- scripts/
+  Innehåller JavaScript-filer för t.ex. cart.js, checkout.js och index.js. Dessa filer hanterar den interaktiva logiken på respektive sida.
+
+- scss/base, scss/components, scss/layout
+  Underkategorier för SCSS
 
 ### Endpoints (API)
 
