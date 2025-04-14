@@ -162,6 +162,82 @@ I mappen `utils` finns en samling hjälpfunktioner som återanvänds genom hela 
   }
 ```
 
+## Autentisering (Login och Register)
+Projektet innehåller en autentiseringsfunktion där användare kan:
+*Registrera sig via auth/register.html*
+*Logga in via auth/login.html*
+Vid inloggning sparas en token i localStorage, som används för att autentisera framtida API-anrop. Denna token kontrolleras innan man får åtkomst till sidor som kräver inloggning.
+Autentiseringslogiken hanteras i auth.js och services.js där Axios används för att kommunicera med backend:
+```javascript
+// Exempel: Logga in användare
+async function loginUser(email, password) {
+  const response = await axios.post(`${BASE_URL}/login/`, { email, password });
+  const token = response.data.token;
+  localStorage.setItem('token', token);
+}
+ ## Dashboard
+När en administratör loggar in kan hen navigera till dashboarden via dashboard/index.html och får då tillgång till följande funktioner:
+*Se och hantera ordrar (order.html & order.js)*
+I order.js används funktionen fetchOrders() för att hämta alla ordrar från backend och visa dem i en tabell:
+javascript
+import { fetchOrders } from "../utils/api.js";
+
+async function renderOrders() {
+  const orders = await fetchOrders();
+  orders.forEach(order => {
+    // Generera HTML-rader för varje order
+  });
+}
+Funktion som används:
+javascript
+export async function fetchOrders() {
+  const url = 'https://webshop-2025-be-g9.vercel.app/api/orders/';
+  const token = localStorage.getItem("token");
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+  const response = await axios.get(url, config);
+  return response.data;
+}
+Administratören kan även skriva ut en plocklista för varje beställning.
+## Lista och redigera produkter (products.html)
+Produkter hämtas och visas på sidan med hjälp av fetchProducts(). Varje produkt listas med möjlighet att redigera pris, antal och kategori.
+Produkter hämtas och visas på sidan med hjälp av fetchProducts(). Varje produkt listas med möjlighet att redigera pris, antal och kategori.
+javascript
+import { fetchProducts } from "../utils/api.js";
+
+async function renderProducts() {
+  const products = await fetchProducts();
+  products.forEach(product => {
+    // Skapa DOM-element för varje produkt
+  });
+}
+Formulär på sidan gör det möjligt för admin att uppdatera produkternas information. Förändringarna skickas till backend med hjälp av PATCH- eller PUT-anrop (om tillgängligt i API).
+##Skapa produktkort i gränssnittet
+När produkter hämtas från API:et används en funktion för att dynamiskt skapa HTML-element – ett produktkort för varje produkt. Det här är ett exempel på hur ett produktkort kan genereras i JavaScript:
+javascript
+function createProductCard(product) {
+  const container = document.createElement("div");
+  container.classList.add("card", "mb-3");
+
+  container.innerHTML = `
+    <div class="card-body">
+      <h5 class="card-title">${product.name}</h5>
+      <p class="card-text">Pris: ${product.price} kr</p>
+      <p class="card-text">Kategori: ${product.category.name}</p>
+      <button class="btn btn-primary">Lägg till i varukorgen</button>
+    </div>
+  `;
+
+  return container;
+}
+Denna funktion används tillsammans med fetchProducts() i loopen för att rendera hela produktlistan:
+javascript
+const productList = document.getElementById("productList");
+products.forEach(product => {
+  const card = createProductCard(product);
+  productList.append(card);
+});
+Kortet innehåller information som namn, pris och kategori.
+```
 
   ## Förbättringspunkter
   - mer UX
